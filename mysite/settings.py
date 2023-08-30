@@ -76,30 +76,35 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'mydatabase',
-#     }
-# }
+DATABASES = {
+    'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'db',
+       'HOST': 'app-b08d4dc9-d07a-4cf7-bec8-112bac309e39-do-user-14558795-0.b.db.ondigitalocean.com',
+       'USER': 'db',
+       'PASSWORD': "AVNS_zRBMryMqDU5Y7ymrFt4",
+       'PORT': '25060',
+    },
+}
+
 
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if os.getenv("DEVELOPMENT_MODE", "False") == "True":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
+# if os.getenv("DEVELOPMENT_MODE", "False") == "True":
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
+# elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+#     if os.getenv("DATABASE_URL", None) is None:
+#         raise Exception("DATABASE_URL environment variable not defined")
+#     DATABASES = {
+#         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+#     }
 
 
 # Password validation
